@@ -39,8 +39,8 @@ def get_words():
   url2 = "https://www.mxnzp.com/api/daily_word/recommend?app_id=avmjhimmkqck7rpp&app_secret=SmFIemU1Ni9IR3R4NXFDbFg3NHB4UT09"
   ##if words.status_code != 200:
     ## return get_words()
-  words = requests.get(url2).json
-  return words['data']['content']
+  words = requests.get(url2).json()
+  return words['data']['content'][0]
 
 def get_random_color():
   return "#%06x" % random.randint(0, 0xFFFFFF)
