@@ -19,8 +19,8 @@ template_id = os.environ["TEMPLATE_ID"]
 
 
 def get_weather():
-  url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city
-  res = requests.get(url).json()
+  url1 = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city
+  res = requests.get(url1).json()
   weather = res['data']['list'][0]
   return weather['weather'], math.floor(weather['temp'])
 
@@ -36,11 +36,11 @@ def get_birthday():
 
 def get_words():
   ##words = requests.get("https://api.shadiao.pro/chp")
-  url = "https://www.mxnzp.com/api/daily_word/recommend?app_id=avmjhimmkqck7rpp&app_secret=SmFIemU1Ni9IR3R4NXFDbFg3NHB4UT09"
+  url2 = "https://www.mxnzp.com/api/daily_word/recommend?app_id=avmjhimmkqck7rpp&app_secret=SmFIemU1Ni9IR3R4NXFDbFg3NHB4UT09"
   ##if words.status_code != 200:
     ## return get_words()
-  words = requests.get(url)
-  return words.json()['data']['content']
+  words = requests.get(url2).json
+  return words['data']['content']
 
 def get_random_color():
   return "#%06x" % random.randint(0, 0xFFFFFF)
