@@ -19,10 +19,10 @@ template_id = os.environ["TEMPLATE_ID"]
 
 
 def get_weather():
-  url1 = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city
+  url1 = "https://devapi.qweather.com/v7/weather/now?location=101280109&key=381ac2c40914464f8ab6e0520f7d4056"
   res = requests.get(url1).json()
-  weather = res['data']['list'][0]
-  return weather['weather'], math.floor(weather['temp'])
+  weather = res['now']
+  return weather['text'], math.floor(weather['temp'])
 
 def get_count():
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
@@ -35,12 +35,10 @@ def get_birthday():
   return (next - today).days
 
 def get_words():
-  ##words = requests.get("https://api.shadiao.pro/chp")
-  url2 = "https://www.mxnzp.com/api/daily_word/recommend?app_id=avmjhimmkqck7rpp&app_secret=SmFIemU1Ni9IR3R4NXFDbFg3NHB4UT09"
-  ##if words.status_code != 200:
-    ## return get_words()
-  words = requests.get(url2)
-  return words.json()['data']
+  words = requests.get("https://api.shadiao.pro/chp")
+  if words.status_code != 200:
+     return get_words()
+  return words.json()['data']['text']
 
 def get_random_color():
   return "#%06x" % random.randint(0, 0xFFFFFF)
