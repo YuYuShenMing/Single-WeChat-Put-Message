@@ -49,6 +49,10 @@ def get_yq():
   yq_data = yq['contryData']
   return yq_data['local_sure_cnt_incr'], yq_data['hidden_cnt_incr']
 
+def get_words2():
+  words2 = requests.get('http://open.iciba.com/dsapi/')
+  return words2.json()['note']
+
 
 client = WeChatClient(app_id, app_secret)
 
@@ -58,6 +62,7 @@ sure, hidden = get_yq()
 data = {"weather":{"value":wea, "color":get_random_color()},"temperature":{"value":temperature, "color":get_random_color()},
         "low":{"value":low, "color":get_random_color()},"high":{"value":high, "color":get_random_color()},
         "love_days":{"value":get_count(), "color":get_random_color()},"birthday_left":{"value":get_birthday(), "color":get_random_color()},
-        "words":{"value":get_words(), "color":get_random_color()}, "sure":{"value":sure, "color":get_random_color()},"hidden":{"value":hidden, "color":get_random_color()}}
+        "words":{"value":get_words(), "color":get_random_color()}, "sure":{"value":sure, "color":get_random_color()},"hidden":{"value":hidden, "color":get_random_color()},
+       "words2":{"value":get_words2(), "color":get_random_color()}, "city":{"value":city, "color":get_random_color()}}
 res = wm.send_template(user_id, template_id, data)
 print(res)
