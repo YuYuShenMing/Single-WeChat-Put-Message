@@ -43,11 +43,21 @@ def get_words():
 def get_random_color():
   return "#%06x" % random.randint(0, 0xFFFFFF)
 
+def get_yq():
+  url = "https://covid.myquark.cn/quark/covid/data?city=" + city
+  yq = requests.get(url).json()
+  yq_data = yq['contryData']
+  return yq_data['local_sure_cnt_incr'], yq_data['hidden_cnt_incr']
+
 
 client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
 wea, temperature, low, high = get_weather()
-data = {"weather":{"value":wea},"temperature":{"value":temperature},"low":{"value":low},"high":{"value":high},"love_days":{"value":get_count()},"birthday_left":{"value":get_birthday()},"words":{"value":get_words(), "color":get_random_color()}}
+sure, hidden = getyq()
+data = {"weather":{"value":wea, "color":get_random_color()},"temperature":{"value":temperature, "color":get_random_color()},
+        "low":{"value":low, "color":get_random_color()},"high":{"value":high, "color":get_random_color()},
+        "love_days":{"value":get_count(), "color":get_random_color()},"birthday_left":{"value":get_birthday(), "color":get_random_color()},
+        "words":{"value":get_words(), "color":get_random_color()}, "sure":{"value":sure, "color":get_random_color()},"hidden":{"value":hidden, "color":get_random_color()}}
 res = wm.send_template(user_id, template_id, data)
 print(res)
