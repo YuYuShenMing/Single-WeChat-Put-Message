@@ -17,6 +17,8 @@ app_secret = os.environ["APP_SECRET"]
 user_id = os.environ["USER_ID"]
 template_id = os.environ["TEMPLATE_ID"]
 
+def get_city():
+  return city
 
 def get_weather():
   url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city
@@ -43,11 +45,11 @@ def get_words():
 def get_random_color():
   return "#%06x" % random.randint(0, 0xFFFFFF)
 
-def get_yq():
-  url = "https://covid.myquark.cn/quark/covid/data?city=" + city
-  yq = requests.get(url).json()
-  yq_data = yq['contryData']
-  return yq_data['local_sure_cnt_incr'], yq_data['hidden_cnt_incr']
+#def get_yq():
+#  url = "https://covid.myquark.cn/quark/covid/data?city=" + city
+#  yq = requests.get(url).json()
+#  yq_data = yq['contryData']
+#  return yq_data['local_sure_cnt_incr'], yq_data['hidden_cnt_incr']
 
 def get_words2():
   words2 = requests.get('http://open.iciba.com/dsapi/')
@@ -62,7 +64,7 @@ sure, hidden = get_yq()
 data = {"weather":{"value":wea, "color":get_random_color()},"temperature":{"value":temperature, "color":get_random_color()},
         "low":{"value":low, "color":get_random_color()},"high":{"value":high, "color":get_random_color()},
         "love_days":{"value":get_count(), "color":get_random_color()},"birthday_left":{"value":get_birthday(), "color":get_random_color()},
-        "words":{"value":get_words(), "color":get_random_color()}, "sure":{"value":sure, "color":get_random_color()},"hidden":{"value":hidden, "color":get_random_color()},
+        "words":{"value":get_words(), "color":get_random_color()}, '''"sure":{"value":sure, "color":get_random_color()},"hidden":{"value":hidden, "color":get_random_color()},'''
        "words2":{"value":get_words2(), "color":get_random_color()}, "city":{"value":city, "color":get_random_color()}}
 res = wm.send_template(user_id, template_id, data)
 print(res)
