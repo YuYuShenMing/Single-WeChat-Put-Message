@@ -20,6 +20,10 @@ template_id = os.environ["TEMPLATE_ID"]
 def get_city():
   return city
 
+def get_date():
+  time = datetime,now()
+  return time
+
 def get_weather():
   url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city
   res = requests.get(url).json()
@@ -65,6 +69,6 @@ data = {"weather":{"value":wea, "color":get_random_color()},"temperature":{"valu
         "low":{"value":low, "color":get_random_color()},"high":{"value":high, "color":get_random_color()},
         "love_days":{"value":get_count(), "color":get_random_color()},"birthday_left":{"value":get_birthday(), "color":get_random_color()},
         "words":{"value":get_words(), "color":get_random_color()}, '''"sure":{"value":sure, "color":get_random_color()},"hidden":{"value":hidden, "color":get_random_color()},
-       "words2":{"value":get_words2(), "color":get_random_color()},''' "city":{"value":city, "color":get_random_color()}, "date":{"value":today, "color":get_random_color()}}
+       "words2":{"value":get_words2(), "color":get_random_color()},''' "city":{"value":city, "color":get_random_color()}, "date":{"value":time, "color":get_random_color()}}
 res = wm.send_template(user_id, template_id, data)
 print(res)
