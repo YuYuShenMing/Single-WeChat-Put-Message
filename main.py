@@ -15,6 +15,7 @@ app_id = os.environ["APP_ID"]
 app_secret = os.environ["APP_SECRET"]
 
 user_id = os.environ["USER_ID"]
+user_id_2 = os.environ["USER_ID_2"]
 template_id = os.environ["TEMPLATE_ID"]
 
 def get_city():
@@ -66,5 +67,7 @@ data = {"weather":{"value":wea, "color":get_random_color()},"temperature":{"valu
         "love_days":{"value":get_count(), "color":get_random_color()},"birthday_left":{"value":get_birthday(), "color":get_random_color()},
         "words":{"value":get_words(), "color":get_random_color()}, '''"sure":{"value":sure, "color":get_random_color()},"hidden":{"value":hidden, "color":get_random_color()},
        "words2":{"value":get_words2(), "color":get_random_color()},''' "city":{"value":city, "color":get_random_color()}}
-res = wm.send_template(user_id, template_id, data)
-print(res)
+res1 = wm.send_template(user_id, template_id, data)
+res2 = wm.send_template(user_id_2, template_id, data)
+print(res1)
+print(res2)
