@@ -15,7 +15,7 @@ app_id = os.environ["APP_ID"]
 app_secret = os.environ["APP_SECRET"]
 
 user_id = os.environ["USER_ID"]
-user_id_2 = os.environ["USER_ID_2"]
+user_id_2 = os.environ["USER_IDTWO"]
 template_id = os.environ["TEMPLATE_ID"]
 
 def get_city():
