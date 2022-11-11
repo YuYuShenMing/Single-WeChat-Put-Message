@@ -21,7 +21,7 @@ def get_city():
   return city
 
 def get_date():
-  time = datetime,now()
+  time = datetime.now()
   return time
 
 def get_weather():
