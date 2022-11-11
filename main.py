@@ -22,13 +22,13 @@ def get_city():
   return city
 
 def get_date():
-  year = time.localtime().tm_year
-  month = time.localtime().tm_mon
-  day = time.localtime().tm_mday
+  year = datetime.now().year
+  month = datetime.now().month
+  day = datetime.now().day
   weeklist = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"]
-  weekindex = time.localtime().tm_wday
+  weekindex = datetime.now().weekday()
   week = weeklist[weekindex]
-  time = str(year) + "年" + str(month) + "月" + str(day) + "日" + str(week)
+  time = str(year) + "年" + str(month) + "月" + str(day) + "日" + " " +str(week)
   return time
 
 def get_weather():
