@@ -82,18 +82,3 @@ def get_random_color():
 #  words2 = requests.get('http://open.iciba.com/dsapi/')
 #  return words2.json()['note']
 
-
-# client = WeChatClient(app_id, app_secret)
-#
-# wm = WeChatMessage(client)
-# wea, temperature, low, high = get_weather()
-# #sure, hidden = get_yq()
-# '''"sure":{"value":sure, "color":get_random_color()},"hidden":{"value":hidden, "color":get_random_color()},
-#        "words2":{"value":get_words2(), "color":get_random_color()},'''
-# data = {"weather":{"value":wea, "color":get_random_color()},"temperature":{"value":temperature, "color":get_random_color()},
-#         "low":{"value":low, "color":get_random_color()},"high":{"value":high, "color":get_random_color()},
-#         "love_days":{"value":get_count(), "color":get_random_color()},"birthday_left":{"value":get_birthday(), "color":get_random_color()},
-#         "words":{"value":get_words(), "color":get_random_color()}, "date":{"value":get_date(), "color":get_random_color()}, "city":{"value":city, "color":get_random_color()},
-#        "course":{"value":get_course(), "color":get_random_color()}}
-# res = wm.send_template(user_id, template_id, data)
-# print(res)
