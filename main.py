@@ -25,7 +25,7 @@ template_id = os.environ["TEMPLATE_ID"]
 def get_course():
   weekindex = datetime.now().weekday()
   course = ''
-  if weekindex == 0 or weekindex == 4 or weekindex == 6:
+  if weekindex == 1 or weekindex == 4 or weekindex == 6:
       course = "宝~今天要去练声喔~~"
       return course
   return course
