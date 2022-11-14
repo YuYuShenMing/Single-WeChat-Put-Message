@@ -15,16 +15,17 @@ from put import get_words
 from put import get_random_color
 from put import get_birthday
 
-# today = datetime.now()
-# start_date = '2022-02-16'
-city = '天河区'
-# birthday = '12-02'
+today = datetime.now()
+start_date = os.environ['START_DATE']
+city = os.environ['CITY']
+birthday = os.environ['BIRTHDAY']
 
-app_id = 'wxb4afc17cd3aafdc6'
-app_secret = 'f39f44b24136158129928cf7de792dc2'
+app_id = os.environ["APP_ID"]
+app_secret = os.environ["APP_SECRET"]
 
-user_id = 'ohLxg5_WDNdN_zoLfiwNBez9awI0'
-template_id = 'NUMnOmRtk_jiCfVX6RtOkD233aZCBS8YqfJKoD7aE64'
+user_id = os.environ["USER_ID"]
+template_id = os.environ["TEMPLATE_ID"]
+
 
 client = WeChatClient(app_id, app_secret)
 
