@@ -22,6 +22,14 @@ template_id = os.environ["TEMPLATE_ID"]
 #def get_city():
 #  return city
 
+def get_course():
+  weekindex = datetime.now().weekday()
+  course = ''
+  if weekindex == 0 or weekindex == 4 or weekindex == 6:
+      course = "宝~今天要去练声喔~~"
+      return course
+  return course
+
 def get_date():
   year = datetime.now().year
   month = datetime.now().month
@@ -78,6 +86,7 @@ wea, temperature, low, high = get_weather()
 data = {"weather":{"value":wea, "color":get_random_color()},"temperature":{"value":temperature, "color":get_random_color()},
         "low":{"value":low, "color":get_random_color()},"high":{"value":high, "color":get_random_color()},
         "love_days":{"value":get_count(), "color":get_random_color()},"birthday_left":{"value":get_birthday(), "color":get_random_color()},
-        "words":{"value":get_words(), "color":get_random_color()}, "date":{"value":get_date(), "color":get_random_color()}, "city":{"value":city, "color":get_random_color()}}
+        "words":{"value":get_words(), "color":get_random_color()}, "date":{"value":get_date(), "color":get_random_color()}, "city":{"value":city, "color":get_random_color()}, 
+       "course":{"value":get_course(), "color":get_random_color()}}
 res = wm.send_template(user_id, template_id, data)
 print(res)
