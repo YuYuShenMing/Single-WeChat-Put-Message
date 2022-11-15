@@ -1,11 +1,6 @@
-from datetime import date, datetime
-import math
+import datetime
 from wechatpy import WeChatClient
 from wechatpy.client.api import WeChatMessage, WeChatTemplate
-import requests
-import os
-import random
-import time
 
 from put import get_course
 from put import get_date
@@ -16,14 +11,14 @@ from put import get_random_color
 from put import get_birthday
 from put import get_jingqi
 
-today = datetime.now()
+today = datetime.datetime.now()
 start_date = os.environ['START_DATE']
 city = os.environ['CITY']
 birthday = os.environ['BIRTHDAY']
 
 jingqi = os.environ['JINGQI']
-jingqitoday = datetime.date(datetime.now())
-round = 26
+jingqitoday = datetime.datetime.date(datetime.datetime.now())
+zhouqi = 26
 laterday = 2
 
 
@@ -33,11 +28,11 @@ app_secret = os.environ["APP_SECRET"]
 user_id = os.environ["USER_ID"]
 template_id = os.environ["TEMPLATE_ID"]
 
-
 client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
 wea, temperature, low, high = get_weather()
+jingqi_data = get_jingqi('2022-11-08', jingqitoday, 26, 2)
 # sure, hidden = get_yq()
 '''"sure":{"value":sure, "color":get_random_color()},"hidden":{"value":hidden, "color":get_random_color()},
        "words2":{"value":get_words2(), "color":get_random_color()},'''
@@ -50,6 +45,6 @@ data = {"weather": {"value": wea, "color": get_random_color()},
         "date": {"value": get_date(), "color": get_random_color()},
         "city": {"value": city, "color": get_random_color()},
         "course": {"value": get_course(), "color": get_random_color()},
-        "jingqi": {"value": get_jingqi(jingqi, jingqitoday, round, laterday), "color": get_random_color()}}
+        "jingqi": {"value": jingqi_data, "color": get_random_color()}}
 res = wm.send_template(user_id, template_id, data)
 print(res)
