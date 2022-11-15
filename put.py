@@ -12,17 +12,6 @@ start_date = os.environ['START_DATE']
 city = os.environ['CITY']
 birthday = os.environ['BIRTHDAY']
 
-jingqi = os.environ['JINGQI']
-jingqitoday = datetime.datetime.date(datetime.datetime.now())
-zhouqi = 26
-laterday = 2
-
-
-app_id = os.environ["APP_ID"]
-app_secret = os.environ["APP_SECRET"]
-
-user_id = os.environ["USER_ID"]
-template_id = os.environ["TEMPLATE_ID"]
 
 # app_id = 'wxb4afc17cd3aafdc6'
 # app_secret = 'f39f44b24136158129928cf7de792dc2'
