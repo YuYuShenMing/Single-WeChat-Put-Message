@@ -67,6 +67,38 @@ def get_words():
         return get_words()
     return words.json()['data']['text']
 
+def get_jingqi(momday1, today, round, tempday):
+    # 经期
+    try:
+        ym = 7
+        mm_year = int(momday1.split("-")[0])
+        mm_month = int(momday1.split("-")[1])
+        mm_day = int(momday1.split("-")[2])
+        momday = date(mm_year, mm_month, mm_day)  # 当前日期
+        sumdays = str(today.__sub__(momday)).split(" ")[0]  # 距上次日期
+        days = int(int(sumdays) / round)  # 周期
+        TempDay = tempday * days  # 延迟日期
+        delta = datetime.timedelta(days=days * round + TempDay)  # 周期及延迟天数增量
+        startday = momday + delta  # 开始日期
+        delta = datetime.timedelta(days=ym - 1)  # 最后一天增量
+        lastday = startday + delta  # 最后一天
+        if startday <= today <= lastday:
+            if today != lastday:
+                time1 = str(today.__sub__(startday))[0]
+                mytext = '这几天预计就来姨妈啦~ 今天是预计的第' + str(int(time1) + 1) + '天~ 还要坚持' + \
+                         str(lastday.__sub__(today)).split(" ")[0] + '天哦~'
+            else:
+                mytext = '姨妈就快要走啦~马上可以愉快地玩耍啦~'
+        else:
+            a = int(str(lastday.__sub__(today)).split(" ")[0]) + 1
+            if a <= 0:
+                dy = 32 - ym - abs(a)
+            else:
+                dy = a - ym
+            mytext = '预计下次姨妈还有' + str(dy) + '天~'
+    except:
+        mytext = ''
+    return mytext
 
 def get_random_color():
     # 时间
