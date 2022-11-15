@@ -13,11 +13,12 @@ from put import get_birthday
 from put import get_jingqi
 
 today = datetime.datetime.now()
+jingqi = os.environ['JINGQI']
 start_date = os.environ['START_DATE']
 city = os.environ['CITY']
 birthday = os.environ['BIRTHDAY']
 
-jingqi = os.environ['JINGQI']
+
 jingqitoday = datetime.datetime.date(datetime.datetime.now())
 zhouqi = 26
 laterday = 2
