@@ -14,11 +14,18 @@ from put import get_count
 from put import get_words
 from put import get_random_color
 from put import get_birthday
+from put import get_jingqi
 
 today = datetime.now()
 start_date = os.environ['START_DATE']
 city = os.environ['CITY']
 birthday = os.environ['BIRTHDAY']
+
+jingqi = os.environ['JINGQI']
+jingqitoday = datetime.date(datetime.now())
+round = 26
+laterday = 2
+
 
 app_id = os.environ["APP_ID"]
 app_secret = os.environ["APP_SECRET"]
@@ -42,6 +49,7 @@ data = {"weather": {"value": wea, "color": get_random_color()},
         "words": {"value": get_words(), "color": get_random_color()},
         "date": {"value": get_date(), "color": get_random_color()},
         "city": {"value": city, "color": get_random_color()},
-        "course": {"value": get_course(), "color": get_random_color()}}
+        "course": {"value": get_course(), "color": get_random_color()},
+        "jingqi": {"value": get_jingqi(jingqi, jingqitoday, round, laterday), "color": get_random_color()}}
 res = wm.send_template(user_id, template_id, data)
 print(res)
