@@ -7,6 +7,8 @@ import os
 import random
 import time
 
+delter = datetime.timedelta(days=1)  # 与github actions定时任务的延迟日期增量
+today = datetime.datetime.now() + delter
 today = datetime.datetime.now()
 start_date = os.environ['START_DATE']
 city = os.environ['CITY']
@@ -35,11 +37,13 @@ def get_course():
 
 def get_date():
     # 当前日期
-    year = datetime.datetime.now().year
-    month = datetime.datetime.now().month
-    day = datetime.datetime.now().day
+    delter = datetime.timedelta(days=1)  # 由于github actions 延迟产生的时差，故+1天
+    date = datetime.datetime.now() + delter
+    year = date.year
+    month = date.month
+    day = date.day
     weeklist = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"]
-    weekindex = datetime.datetime.now().weekday()
+    weekindex = date.weekday()
     week = weeklist[weekindex]
     time = str(year) + "年" + str(month) + "月" + str(day) + "日" + " " + str(week)
     return time
