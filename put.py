@@ -9,7 +9,6 @@ import time
 
 delter = datetime.timedelta(days=1)  # 与github actions定时任务的延迟日期增量
 today = datetime.datetime.now() + delter
-today = datetime.datetime.now()
 start_date = os.environ['START_DATE']
 city = os.environ['CITY']
 birthday = os.environ['BIRTHDAY']
@@ -27,7 +26,7 @@ birthday = os.environ['BIRTHDAY']
 
 def get_course():
     # 课程
-    weekindex = datetime.datetime.now().weekday()
+    weekindex = today.weekday()
     course = ''
     if weekindex == 1 or weekindex == 4 or weekindex == 6:
         course = "宝~今天要去练声喔~~"
@@ -37,13 +36,13 @@ def get_course():
 
 def get_date():
     # 当前日期
-    delter = datetime.timedelta(days=1)  # 由于github actions 延迟产生的时差，故+1天
-    date = datetime.datetime.now() + delter
-    year = date.year
-    month = date.month
-    day = date.day
+    #delter = datetime.timedelta(days=1)  # 由于github actions 延迟产生的时差，故+1天
+    #date = datetime.datetime.now() + delter
+    year = today.year
+    month = today.month
+    day = today.day
     weeklist = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"]
-    weekindex = date.weekday()
+    weekindex = today.weekday()
     week = weeklist[weekindex]
     time = str(year) + "年" + str(month) + "月" + str(day) + "日" + " " + str(week)
     return time
@@ -68,7 +67,7 @@ def get_birthday():
     next = datetime.datetime.strptime(str(datetime.date.today().year) + "-" + birthday, "%Y-%m-%d")
     if next < datetime.datetime.now():
         next = next.replace(year=next.year + 1)
-    return (next - today).days
+    return (next - today).days + 1
 
 
 def get_words():
