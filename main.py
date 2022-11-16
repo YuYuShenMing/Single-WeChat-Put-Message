@@ -12,14 +12,15 @@ from put import get_random_color
 from put import get_birthday
 from put import get_jingqi
 
-today = datetime.datetime.now()
+delter = datetime.timedelta(days=1)  # 与github actions定时任务的延迟日期增量
+today = datetime.datetime.now() + delter
 jingqi = os.environ['JINGQI']
 start_date = os.environ['START_DATE']
 city = os.environ['CITY']
 birthday = os.environ['BIRTHDAY']
 
 
-jingqitoday = datetime.datetime.date(datetime.datetime.now())
+jingqitoday = datetime.datetime.date(datetime.datetime.now() + delter)
 zhouqi = 26
 laterday = 2
 
