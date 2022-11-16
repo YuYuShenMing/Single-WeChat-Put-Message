@@ -65,9 +65,9 @@ def get_count():
 def get_birthday():
     # 生日
     next = datetime.datetime.strptime(str(datetime.date.today().year) + "-" + birthday, "%Y-%m-%d")
-    if next < datetime.datetime.now():
+    if next < today:
         next = next.replace(year=next.year + 1)
-    return (next - today).days + 1
+    return (next - today).days + 1  # 加1是增量
 
 
 def get_words():
