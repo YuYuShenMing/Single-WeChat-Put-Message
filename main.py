@@ -20,7 +20,7 @@ city = os.environ['CITY']
 birthday = os.environ['BIRTHDAY']
 
 
-jingqitoday = datetime.datetime.date(datetime.datetime.now() + delter)
+jingqitoday = datetime.datetime.date(datetime.datetime.now() + delter)  # 有增量
 zhouqi = 26
 laterday = 2
 
