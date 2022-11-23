@@ -3,7 +3,7 @@ from wechatpy import WeChatClient
 from wechatpy.client.api import WeChatMessage, WeChatTemplate
 import os
 
-from put import get_course
+#from put import get_course
 from put import get_date
 from put import get_weather
 from put import get_count
