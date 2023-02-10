@@ -48,12 +48,24 @@ def get_date():
     return time
 
 
+# def get_weather():
+    # 天气
+    # url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city
+#     url = "https://devapi.qweather.com/v7/weather/now?key=381ac2c40914464f8ab6e0520f7d4056&location=101120807"
+#     res = requests.get(url).json()
+#     weather = res['data']['list'][0]
+#     return weather['weather'], math.floor(weather['temp']), math.floor(weather['low']), math.floor(weather['high'])
 def get_weather():
     # 天气
-    url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city
-    res = requests.get(url).json()
-    weather = res['data']['list'][0]
-    return weather['weather'], math.floor(weather['temp']), math.floor(weather['low']), math.floor(weather['high'])
+    # url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city
+    url1 = "https://devapi.qweather.com/v7/weather/now?key=381ac2c40914464f8ab6e0520f7d4056&location=101120807"
+    url2 = "https://devapi.qweather.com/v7/weather/3d?key=381ac2c40914464f8ab6e0520f7d4056&location=101120807"
+    res1 = requests.get(url1).json()
+    res2 = requests.get(url2).json()
+    weather1 = res1['now']
+    weather2 = res2['daily'][0]
+    # print(weather2['textDay'], weather2['tempMax'], weather2['tempMin'], weather1['temp'])
+    return weather2['textDay'], weather2['tempMax'], weather2['tempMin'], weather1['temp']
 
 
 def get_count():
