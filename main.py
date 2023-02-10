@@ -34,7 +34,7 @@ template_id = os.environ["TEMPLATE_ID"]
 client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
-wea, temperature, low, high = get_weather()
+wea, high, low, temperature = get_weather()
 jingqi_data = get_jingqi('2022-11-08', jingqitoday, 26, 2)
 # sure, hidden = get_yq()
 '''"sure":{"value":sure, "color":get_random_color()},"hidden":{"value":hidden, "color":get_random_color()},
