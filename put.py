@@ -58,8 +58,8 @@ def get_date():
 def get_weather():
     # 天气
     # url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city
-    url1 = "https://devapi.qweather.com/v7/weather/now?key=381ac2c40914464f8ab6e0520f7d4056&location=" + city
-    url2 = "https://devapi.qweather.com/v7/weather/3d?key=381ac2c40914464f8ab6e0520f7d4056&location=" + city
+    url1 = "https://devapi.qweather.com/v7/weather/now?key=381ac2c40914464f8ab6e0520f7d4056&location=101280109"
+    url2 = "https://devapi.qweather.com/v7/weather/3d?key=381ac2c40914464f8ab6e0520f7d4056&location=101280109"
     res1 = requests.get(url1).json()
     res2 = requests.get(url2).json()
     weather1 = res1['now']
