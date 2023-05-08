@@ -87,7 +87,7 @@ def get_words():
     words = requests.get("https://api.shadiao.pro/chp")
     if words.status_code != 200:
         return get_words()
-    return words.json()['data']['text']
+    return eval("u"+"\'"+words.json()['data']['text']+"\'")
 
 
 def get_jingqi(momday1, today, zhouqi, tempday):
