@@ -123,8 +123,10 @@ def get_words():
 #         mytext = str(e)
 #     return mytext
 def get_jingqi():
-    data = datetime.datetime.now()
-    return data
+    word = requests.get("https://api.shadiao.pro/chp")
+    if word.status_code != 200:
+        return get_words()
+    return word.json()['data']['text']
 
 def get_random_color():
     # 颜色
