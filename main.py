@@ -35,7 +35,8 @@ client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
 wea, high, low, temperature = get_weather()
-jingqi_data = get_jingqi('2022-11-08', jingqitoday, 26, 2)
+#jingqi_data = get_jingqi('2022-11-08', jingqitoday, 26, 2)
+jingqi_data = "1"
 words = get_words()
 # sure, hidden = get_yq()
 '''"sure":{"value":sure, "color":get_random_color()},"hidden":{"value":hidden, "color":get_random_color()},
@@ -49,6 +50,6 @@ data = {"weather": {"value": wea, "color": get_random_color()},
         "date": {"value": get_date(), "color": get_random_color()},
         "city": {"value": city, "color": get_random_color()}}
         #"course": {"value": get_course(), "color": get_random_color()},
-        "jingqi": {"value": 1, "color": get_random_color()}}
+        "jingqi": {"value": jingqi_data, "color": get_random_color()}}
 res = wm.send_template(user_id, template_id, data)
 print(res)
