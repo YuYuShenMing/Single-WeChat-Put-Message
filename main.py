@@ -36,7 +36,7 @@ client = WeChatClient(app_id, app_secret)
 wm = WeChatMessage(client)
 wea, high, low, temperature = get_weather()
 #jingqi_data = get_jingqi('2022-11-08', jingqitoday, 26, 2)
-words = get_words()
+
 # sure, hidden = get_yq()
 '''"sure":{"value":sure, "color":get_random_color()},"hidden":{"value":hidden, "color":get_random_color()},
        "words2":{"value":get_words2(), "color":get_random_color()},'''
@@ -45,7 +45,7 @@ data = {"weather": {"value": wea, "color": get_random_color()},
         "low": {"value": low, "color": get_random_color()}, "high": {"value": high, "color": get_random_color()},
         "love_days": {"value": get_count(), "color": get_random_color()},
         "birthday_left": {"value": get_birthday(), "color": get_random_color()},
-        "words": {"value": words, "color": get_random_color()},
+        "words": {"value": get_words(), "color": get_random_color()},
         "date": {"value": get_date(), "color": get_random_color()},
         "city": {"value": city, "color": get_random_color()},
         #"course": {"value": get_course(), "color": get_random_color()},
