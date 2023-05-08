@@ -87,7 +87,7 @@ def get_words():
     word = requests.get("https://api.shadiao.pro/chp")
     if word.status_code != 200:
         return get_words()
-    words = eval("u"+"\'"+words.json()['data']['text']+"\'")
+    words = eval("u"+"\'"+word.json()['data']['text']+"\'")
     return words
 
 
