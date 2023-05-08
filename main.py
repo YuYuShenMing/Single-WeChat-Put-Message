@@ -47,8 +47,8 @@ data = {"weather": {"value": wea, "color": get_random_color()},
         "birthday_left": {"value": get_birthday(), "color": get_random_color()},
         "words": {"value": get_words(), "color": get_random_color()},
         "date": {"value": get_date(), "color": get_random_color()},
-        "city": {"value": city, "color": get_random_color()},
+        "jingqi": {"value": get_jingqi(), "color": get_random_color()},
+        "city": {"value": city, "color": get_random_color()}}
         #"course": {"value": get_course(), "color": get_random_color()},
-        "jingqi": {"value": get_jingqi(), "color": get_random_color()}}
 res = wm.send_template(user_id, template_id, data)
 print(res)
