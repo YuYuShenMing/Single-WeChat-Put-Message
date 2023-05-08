@@ -84,11 +84,10 @@ def get_birthday():
 
 def get_words():
     # 每日一句
-    word = requests.get("https://api.shadiao.pro/chp")
-    if word.status_code != 200:
+    words = requests.get("https://api.shadiao.pro/chp")
+    if words.status_code != 200:
         return get_words()
-    words = eval("u"+"\'"+word.json()['data']['text']+"\'")
-    return words
+    return words.json()['data']['text']
 
 
 # def get_jingqi(momday1, today, zhouqi, tempday):
