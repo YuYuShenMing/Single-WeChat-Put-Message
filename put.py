@@ -124,7 +124,7 @@ def get_words():
 #         mytext = str(e)
 #     return mytext
 def get_jingqi():
-    data = today.year
+    data = datetime.datetime.now()
     return data
 
 def get_random_color():
