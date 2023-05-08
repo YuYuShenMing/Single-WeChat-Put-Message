@@ -49,6 +49,6 @@ data = {"weather": {"value": wea, "color": get_random_color()},
         "date": {"value": get_date(), "color": get_random_color()},
         "city": {"value": city, "color": get_random_color()}}
         #"course": {"value": get_course(), "color": get_random_color()},
-        #"jingqi": {"value": jingqi_data, "color": get_random_color()}}
+        "jingqi": {"value": 1, "color": get_random_color()}}
 res = wm.send_template(user_id, template_id, data)
 print(res)
